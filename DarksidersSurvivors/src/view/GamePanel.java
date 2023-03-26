@@ -37,6 +37,7 @@ public class GamePanel extends JPanel{
         this.frames = 0;
         importImage();
     }
+    
     public void changeXDelta(int value){
         this.xDelta += value;
         
@@ -48,7 +49,8 @@ public class GamePanel extends JPanel{
     
     public void paintComponent(Graphics g){
         super.paintComponent(g);
-        g.drawImage(img, WIDTH, WIDTH, null);
+        
+        g.drawImage(img.getSubimage(0, 0, 16, 24), (int)xDelta, (int)yDelta,80, 110, null);
         
     
     }
