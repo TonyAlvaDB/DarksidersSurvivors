@@ -16,13 +16,27 @@ import javax.swing.JPanel;
  *
  */
 public class GamePanel extends JPanel{
+    private int xDelta;
+    private int yDelta;
+    
     public GamePanel(){
+        addKeyListener(new KeyboardInputs(this));
+        this.xDelta = 0;
+        this.yDelta = 0;
+    }
+    public void changeXDelta(int value){
+        this.xDelta += value;
+        
+    }
+    public void changeYDelta(int value){
+        this.yDelta += value;
         
     }
     
+    
     public void paintComponent(Graphics g){
         super.paintComponent(g);
-        g.fillRect(100, 100, 200, 50);
-        
+        g.fillRect(100+xDelta, 100+yDelta, 200, 50);
+        repaint();
     }
 }
