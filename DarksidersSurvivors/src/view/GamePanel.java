@@ -63,7 +63,7 @@ public class GamePanel extends JPanel{
     }
 
     private void importImage() {
-        InputStream is = getClass().getResourceAsStream("/Walk.png");
+        InputStream is = getClass().getResourceAsStream("/SpriteSheet.png");
         try {
             sprite = ImageIO.read(is);
         } catch (IOException ex) {
@@ -80,7 +80,7 @@ public class GamePanel extends JPanel{
     private void loadAnimations() {
        idleAnimation = new BufferedImage[6];
        for (int i = 0; i < idleAnimation.length; i++)
-           idleAnimation[i] = sprite.getSubimage(i*22, 0, 22, 24);
+           idleAnimation[i] = sprite.getSubimage(i*22, 48, 22, 24);
     }
 
     private void updateAnimationTick() {
