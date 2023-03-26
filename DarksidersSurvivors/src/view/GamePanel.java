@@ -18,11 +18,13 @@ import javax.swing.JPanel;
 public class GamePanel extends JPanel{
     private int xDelta;
     private int yDelta;
+    private int frames;
     
     public GamePanel(){
         addKeyListener(new KeyboardInputs(this));
         this.xDelta = 0;
         this.yDelta = 0;
+        this.frames = 0;
     }
     public void changeXDelta(int value){
         this.xDelta += value;
@@ -37,6 +39,5 @@ public class GamePanel extends JPanel{
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         g.fillRect(100+xDelta, 100+yDelta, 200, 50);
-        repaint();
     }
 }
