@@ -3,9 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
-package controller;
+package view;
 
-import view.GameWindow;
+import javax.swing.JFrame;
 
 /**
  *
@@ -14,11 +14,14 @@ import view.GameWindow;
  * Software Engeneer Student - UIA
  *
  */
-public class Game {
-    private GameWindow gameWindow;
+public class GameWindow{
     
-    public Game (){
-        gameWindow = new GameWindow();
+    private JFrame jframe;
+    
+    public GameWindow(){
+        jframe = new JFrame();
+        jframe.setSize(400, 400);
+        jframe.setVisible(true);
     }
 
 
