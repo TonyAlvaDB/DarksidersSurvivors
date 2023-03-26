@@ -5,7 +5,14 @@
 
 package view;
 
+import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 /**
@@ -19,12 +26,16 @@ public class GamePanel extends JPanel{
     private int xDelta;
     private int yDelta;
     private int frames;
+    private BufferedImage img;
     
     public GamePanel(){
+        
         addKeyListener(new KeyboardInputs(this));
+        setPanelSize();
         this.xDelta = 0;
         this.yDelta = 0;
         this.frames = 0;
+        importImage();
     }
     public void changeXDelta(int value){
         this.xDelta += value;
@@ -35,9 +46,27 @@ public class GamePanel extends JPanel{
         
     }
     
-    
     public void paintComponent(Graphics g){
         super.paintComponent(g);
-        g.fillRect(100+xDelta, 100+yDelta, 200, 50);
+        g.drawImage(img, WIDTH, WIDTH, null);
+        
+    
+    }
+
+    private void setPanelSize() {
+        Dimension size = new Dimension(800, 600);
+        setMinimumSize(size);
+        setPreferredSize(size);
+        setMaximumSize(size);
+        
+    }
+
+    private void importImage() {
+        InputStream is = getClass().getResourceAsStream("/Combat_Ready_Idle.png");
+        try {
+            img = ImageIO.read(is);
+        } catch (IOException ex) {
+            Logger.getLogger(GamePanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
