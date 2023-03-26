@@ -33,8 +33,8 @@ public class GamePanel extends JPanel{
     private int animationTick;
     private int animationIndex;
     private int animationSpeed;
-    private int playerAction = IDLE;
-    private int playerDirection = -1;
+    private int playerAction;
+    private int playerDirection;
     private boolean moving;
     
     public GamePanel(){
@@ -44,10 +44,13 @@ public class GamePanel extends JPanel{
         this.xDelta = 0;
         this.yDelta = 0;
         this.frames = 0;
-        this.animationIndex = this.animationSpeed = this.animationTick = 20;   
         this.moving = false;
+        this.playerAction = IDLE;
+        this.playerDirection = -1;
+        this.animationIndex = this.animationSpeed = this.animationTick = 20;
         importImage();
         loadAnimations();
+        
     }
     
     public void setDirection(int direction){
