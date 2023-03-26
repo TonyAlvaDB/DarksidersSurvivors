@@ -26,7 +26,7 @@ public class GamePanel extends JPanel{
     private int xDelta;
     private int yDelta;
     private int frames;
-    private BufferedImage img;
+    private BufferedImage sprite;
     private BufferedImage[] idleAnimation;
     private int animationTick;
     private int animationIndex;
@@ -58,7 +58,7 @@ public class GamePanel extends JPanel{
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         updateAnimationTick();
-        g.drawImage(idleAnimation[animationIndex],(int)xDelta, (int)yDelta,80, 110, null);
+        g.drawImage(idleAnimation[0], (int)xDelta, (int) yDelta,90, 120,  this);
     }
 
     private void setPanelSize() {
@@ -72,7 +72,7 @@ public class GamePanel extends JPanel{
     private void importImage() {
         InputStream is = getClass().getResourceAsStream("/Combat_Ready_Idle.png");
         try {
-            img = ImageIO.read(is);
+            sprite = ImageIO.read(is);
         } catch (IOException ex) {
             Logger.getLogger(GamePanel.class.getName()).log(Level.SEVERE, null, ex);
         } finally{
@@ -85,10 +85,9 @@ public class GamePanel extends JPanel{
     }
 
     private void loadAnimations() {
-       idleAnimation = new BufferedImage[4];
-        for (int i = 0; i < idleAnimation.length; i++) 
-            idleAnimation[i] = img.getSubimage(1, 1, 1, 1);
-        
+       idleAnimation = new BufferedImage[5];
+       for (int i = 0; i < idleAnimation.length; i++)
+           idleAnimation[i] = sprite.getSubimage(22, 0, 16, 24);
     }
 
     private void updateAnimationTick() {
