@@ -27,6 +27,10 @@ public class GamePanel extends JPanel{
     private int yDelta;
     private int frames;
     private BufferedImage img;
+    private BufferedImage[] idleAnimation;
+    private int animationTick;
+    private int animationIndex;
+    private int animationSpeed;
     
     public GamePanel(){
         
@@ -35,7 +39,11 @@ public class GamePanel extends JPanel{
         this.xDelta = 0;
         this.yDelta = 0;
         this.frames = 0;
+        this.animationIndex = 10;
+        this.animationSpeed = 10;
+        this.animationTick = 10;
         importImage();
+        loadAnimations();
     }
     
     public void changeXDelta(int value){
@@ -49,10 +57,8 @@ public class GamePanel extends JPanel{
     
     public void paintComponent(Graphics g){
         super.paintComponent(g);
-        
-        g.drawImage(img.getSubimage(0, 0, 16, 24), (int)xDelta, (int)yDelta,80, 110, null);
-        
-    
+        updateAnimationTick();
+        g.drawImage(idleAnimation[animationIndex],(int)xDelta, (int)yDelta,80, 110, null);
     }
 
     private void setPanelSize() {
@@ -69,6 +75,29 @@ public class GamePanel extends JPanel{
             img = ImageIO.read(is);
         } catch (IOException ex) {
             Logger.getLogger(GamePanel.class.getName()).log(Level.SEVERE, null, ex);
+        } finally{
+            try{
+                is.close();
+            } catch (IOException e){
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void loadAnimations() {
+       idleAnimation = new BufferedImage[4];
+        for (int i = 0; i < idleAnimation.length; i++) 
+            idleAnimation[i] = img.getSubimage(1, 1, 1, 1);
+        
+    }
+
+    private void updateAnimationTick() {
+        animationTick++;
+        if (animationTick >= animationSpeed){
+            animationTick = 0;
+            animationIndex++;
+            if(animationIndex >= idleAnimation.length)
+                animationTick = 0;
         }
     }
 }
