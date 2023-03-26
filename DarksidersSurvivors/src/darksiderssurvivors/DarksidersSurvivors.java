@@ -5,6 +5,8 @@
 
 package darksiderssurvivors;
 
+import controller.Game;
+
 /**
  *
  * Program created by
@@ -18,7 +20,7 @@ public class DarksidersSurvivors {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
+        Game game = new Game();
     }
 
 }

@@ -5,7 +5,8 @@
 
 package view;
 
-import javax.swing.JFrame;
+import java.awt.Graphics;
+import javax.swing.JPanel;
 
 /**
  *
@@ -14,17 +15,13 @@ import javax.swing.JFrame;
  * Software Engeneer Student - UIA
  *
  */
-public class GameWindow{
-    
-    private JFrame jframe;
-    
-    public GameWindow(){
-        jframe = new JFrame();
+public class GamePanel extends JPanel{
+    public GamePanel(){
         
-        jframe.setSize(400, 400);
-        jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        jframe.setVisible(true);
     }
-
-
+    
+    public void paintComponent(Graphics g){
+        super.paintComponent(g);
+        
+    }
 }
