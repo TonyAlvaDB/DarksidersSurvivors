@@ -63,7 +63,7 @@ public class GamePanel extends JPanel{
     }
 
     private void importImage() {
-        InputStream is = getClass().getResourceAsStream("/Combat_Ready_Idle.png");
+        InputStream is = getClass().getResourceAsStream("/Walk.png");
         try {
             sprite = ImageIO.read(is);
         } catch (IOException ex) {
@@ -78,7 +78,7 @@ public class GamePanel extends JPanel{
     }
 
     private void loadAnimations() {
-       idleAnimation = new BufferedImage[5];
+       idleAnimation = new BufferedImage[6];
        for (int i = 0; i < idleAnimation.length; i++)
            idleAnimation[i] = sprite.getSubimage(i*22, 0, 22, 24);
     }
@@ -91,8 +91,8 @@ public class GamePanel extends JPanel{
             if (this.animationIndex >= this.idleAnimation.length)
                 this.animationIndex = 0;
         }
-        
     }
+    
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         updateAnimationTick();
