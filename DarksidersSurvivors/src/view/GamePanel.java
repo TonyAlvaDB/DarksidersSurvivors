@@ -27,7 +27,7 @@ public class GamePanel extends JPanel{
     private int yDelta;
     private int frames;
     private BufferedImage sprite;
-    private BufferedImage[] idleAnimation;
+    private BufferedImage[][] animations;
     private int animationTick;
     private int animationIndex;
     private int animationSpeed;
@@ -78,9 +78,10 @@ public class GamePanel extends JPanel{
     }
 
     private void loadAnimations() {
-       idleAnimation = new BufferedImage[6];
-       for (int i = 0; i < idleAnimation.length; i++)
-           idleAnimation[i] = sprite.getSubimage(i*22, 48, 22, 24);
+        animations = new BufferedImage[6][11];
+        for(int j = 0; j < animations.length; j++) 
+            for (int i = 0; i < animations[j].length; i++)
+               animations[j][i] = sprite.getSubimage(i*22, j*24, 22, 24);
     }
 
     private void updateAnimationTick() {
@@ -88,7 +89,7 @@ public class GamePanel extends JPanel{
         if(this.animationTick >= this.animationSpeed){
             this.animationTick = 0;
             this.animationIndex++;
-            if (this.animationIndex >= this.idleAnimation.length)
+            if (this.animationIndex >= this.animations.length)
                 this.animationIndex = 0;
         }
     }
@@ -96,7 +97,7 @@ public class GamePanel extends JPanel{
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         updateAnimationTick();
-        g.drawImage(idleAnimation[animationIndex], (int)xDelta, (int) yDelta,120, 120,  this);
+        g.drawImage(animations[3][3], (int)xDelta, (int) yDelta,120, 120,  this);
     }
 
 }
