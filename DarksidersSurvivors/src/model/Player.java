@@ -1,5 +1,6 @@
 package model;
 
+import view.LoadSave;
 import static model.Constants.PlayerConstants.*;
 
 import java.awt.Graphics;
@@ -18,47 +19,47 @@ public class Player extends Entity {
     private float playerSpeed = 1.0f;
 
     public Player(float x, float y) {
-            super(x, y);
-            loadAnimations();
+        super(x, y);
+        loadAnimations();
     }
 
     public void update() {
-            updatePos();
-            updateAnimationTick();
-            setAnimation();
+        updatePos();
+        updateAnimationTick();
+        setAnimation();
     }
 
     public void render(Graphics g) {
-            g.drawImage(animations[playerAction][aniIndex], (int) x, (int) y, 100, 100, null);
+        g.drawImage(animations[playerAction][aniIndex], (int) x, (int) y, 100, 100, null);
     }
 
     private void updateAnimationTick() {
-            aniTick++;
-            if (aniTick >= aniSpeed) {
-                    aniTick = 0;
-                    aniIndex++;
-                    if (aniIndex >= GetSpriteAmount(playerAction)) {
-                            aniIndex = 0;
-                            attacking = false;
-                    }
+        aniTick++;
+        if (aniTick >= aniSpeed) {
+                aniTick = 0;
+                aniIndex++;
+                if (aniIndex >= GetSpriteAmount(playerAction)) {
+                        aniIndex = 0;
+                        attacking = false;
+                }
 
-            }
+        }
 
     }
 
     private void setAnimation() {
-            int startAni = playerAction;
+        int startAni = playerAction;
 
-            if (moving)
-                playerAction = WALK;
-            else
-                playerAction = IDLE;
+        if (moving)
+            playerAction = WALK;
+        else
+            playerAction = IDLE;
 
-            if (attacking)
-                playerAction = SWORD;
+        if (attacking)
+            playerAction = SWORD;
 
-            if (startAni != playerAction)
-                resetAniTick();
+        if (startAni != playerAction)
+            resetAniTick();
     }
 
     private void resetAniTick() {
@@ -87,67 +88,57 @@ public class Player extends Entity {
     }
 
     private void loadAnimations() {
-            InputStream is = getClass().getResourceAsStream("/SpriteSheet.png");
-            try {
-                    BufferedImage img = ImageIO.read(is);
+        
+        BufferedImage img = LoadSave.GetSpriteAtlas(LoadSave.PLAYER_ATLAS);
 
-                    animations = new BufferedImage[6][11];
-                    for (int j = 0; j < animations.length; j++)
-                            for (int i = 0; i < animations[j].length; i++)
-                                    animations[j][i] = img.getSubimage(i * 22, j * 24, 22, 24);
+        animations = new BufferedImage[6][11];
+        for (int j = 0; j < animations.length; j++)
+            for (int i = 0; i < animations[j].length; i++)
+                animations[j][i] = img.getSubimage(i * 22, j * 24, 22, 24);
 
-            } catch (IOException e) {
-                    e.printStackTrace();
-            } finally {
-                    try {
-                            is.close();
-                    } catch (IOException e) {
-                            e.printStackTrace();
-                    }
-            }
     }
 
     public void resetDirBooleans() {
-            left = false;
-            right = false;
-            up = false;
-            down = false;
+        left = false;
+        right = false;
+        up = false;
+        down = false;
     }
 
     public void setAttacking(boolean attacking) {
-            this.attacking = attacking;
+        this.attacking = attacking;
     }
 
     public boolean isLeft() {
-            return left;
+        return left;
     }
 
     public void setLeft(boolean left) {
-            this.left = left;
+        this.left = left;
     }
 
     public boolean isUp() {
-            return up;
+        return up;
     }
 
     public void setUp(boolean up) {
-            this.up = up;
+        this.up = up;
     }
 
     public boolean isRight() {
-            return right;
+        return right;
     }
 
     public void setRight(boolean right) {
-            this.right = right;
+        this.right = right;
     }
 
     public boolean isDown() {
-            return down;
+        return down;
     }
 
     public void setDown(boolean down) {
-            this.down = down;
+        this.down = down;
     }
 
 
