@@ -54,7 +54,7 @@ public class GamePanel extends JPanel{
     }
     
     public void setDirection(int direction){
-        this.playerAction = direction;
+        this.playerDirection = direction;
         this.moving = true;
     }
 
@@ -113,16 +113,16 @@ public class GamePanel extends JPanel{
         if(moving){
             switch (playerDirection) {
                 case LEFT:
-                    xDelta -= 5;
+                    xDelta -= 1;
                     break;
                 case UP:
-                    yDelta -= 5;
+                    yDelta -= 1;
                     break;
                 case RIGHT:
-                    xDelta +=5;
+                    xDelta += 1;
                     break;
                 case DOWN:
-                    yDelta += 5;
+                    yDelta += 1;
                     break;
                 
             }
@@ -132,8 +132,10 @@ public class GamePanel extends JPanel{
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         updateAnimationTick();
+        
         setAnimation();
         updatePosition();
+        
         g.drawImage(animations[playerAction][animationIndex], (int)xDelta, (int) yDelta,120, 120,  this);
     }
 
