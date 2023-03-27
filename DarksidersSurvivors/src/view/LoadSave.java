@@ -21,7 +21,7 @@ import javax.imageio.ImageIO;
 public class LoadSave {
     
     public static final String PLAYER_ATLAS = "SpriteSheet.png";
-    public static final String LEVEL_ATLAS = "background.png";
+    public static final String LEVEL_ATLAS = "outdoors.png";
     
     public static BufferedImage GetSpriteAtlas(String fileName){
         BufferedImage img = null;
@@ -39,4 +39,6 @@ public class LoadSave {
         }
         return img;
     }
+
+    
 }
