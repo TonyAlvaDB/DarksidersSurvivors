@@ -32,12 +32,12 @@ public class GameWindow{
         jframe.addWindowFocusListener(new WindowFocusListener() {
             
             public void windowGainedFocus(WindowEvent e) {
-                gamePanel.getGame().windowFocusLost();
+                
             }
 
             
             public void windowLostFocus(WindowEvent e) {
-                
+                gamePanel.getGame().windowFocusLost();
             }
         });
     }
