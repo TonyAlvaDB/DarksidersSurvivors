@@ -93,6 +93,10 @@ public class Game implements Runnable {
         player = new Player(200, 200);
     }
 
+    public void windowFocusLost(){
+        player.resetDirBooleans();
+    }
+    
     public Player getPlayer(){
         return player;
     }

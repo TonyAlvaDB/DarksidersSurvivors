@@ -149,5 +149,6 @@ public class Player extends Entity {
 	public void setDown(boolean down) {
 		this.down = down;
 	}
+        
 
 }
