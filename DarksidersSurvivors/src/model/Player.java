@@ -11,11 +11,11 @@ import javax.imageio.ImageIO;
 
 public class Player extends Entity {
 	private BufferedImage[][] animations;
-	private int aniTick, aniIndex, aniSpeed = 25;
+	private int aniTick, aniIndex, aniSpeed = 35;
 	private int playerAction = IDLE;
 	private boolean moving = false, attacking = false;
 	private boolean left, up, right, down;
-	private float playerSpeed = 2.0f;
+	private float playerSpeed = 1.0f;
 
 	public Player(float x, float y) {
 		super(x, y);

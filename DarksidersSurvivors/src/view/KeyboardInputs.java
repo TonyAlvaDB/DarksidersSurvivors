@@ -34,7 +34,8 @@ public class KeyboardInputs implements KeyListener {
 		case KeyEvent.VK_D:
 			gamePanel.getGame().getPlayer().setRight(false);
 			break;
-		}
+                
+                }
 	}
 
 	@Override
@@ -52,6 +53,9 @@ public class KeyboardInputs implements KeyListener {
 		case KeyEvent.VK_D:
 			gamePanel.getGame().getPlayer().setRight(true);
 			break;
-		}
+		case KeyEvent.VK_1:
+                    gamePanel.getGame().getPlayer().setAttacking(true);
+                    break;
+                }
 	}
 }
