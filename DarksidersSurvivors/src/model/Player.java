@@ -12,13 +12,8 @@ import java.io.InputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
-import static model.Constants.Directions.DOWN;
-import static model.Constants.Directions.LEFT;
-import static model.Constants.Directions.RIGHT;
-import static model.Constants.Directions.UP;
-import static model.Constants.PlayerConstants.GetSpriteAmount;
-import static model.Constants.PlayerConstants.IDLE;
-import static model.Constants.PlayerConstants.WALK;
+import static model.Constants.Directions.*;
+import static model.Constants.PlayerConstants.*;
 import view.GamePanel;
 
 /**
@@ -154,3 +149,5 @@ public class Player extends Character {
     }
     
 }
+
+
