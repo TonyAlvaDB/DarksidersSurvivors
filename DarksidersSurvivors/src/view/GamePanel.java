@@ -17,6 +17,8 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import static model.Constants.PlayerConstants.*;
 import static model.Constants.Directions.*;
+import static controller.Game.GAME_HEIGHT;
+import static controller.Game.GAME_WIDTH;
 
 /**
  *
@@ -34,7 +36,7 @@ public class GamePanel extends JPanel{
     }
    
     private void setPanelSize() {
-        Dimension size = new Dimension(800, 600);
+        Dimension size = new Dimension(GAME_WIDTH, GAME_HEIGHT);
         setPreferredSize(size);
     }
     
