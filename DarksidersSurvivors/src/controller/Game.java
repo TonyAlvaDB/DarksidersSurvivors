@@ -9,6 +9,7 @@ import java.awt.Graphics;
 import model.Player;
 import view.GamePanel;
 import view.GameWindow;
+import view.LevelManager;
 
 /**
  *
@@ -20,6 +21,7 @@ import view.GameWindow;
 public class Game implements Runnable {
     private GameWindow gameWindow;
     private GamePanel gamePanel;
+    private LevelManager levelManager;
     private Thread gameThread;
     private final int FPS_SET = 120;
     private final int UPS_SET = 200;
@@ -50,13 +52,27 @@ public class Game implements Runnable {
     }
     public void update(){
         player.update();
+        levelManager.update();
     }
     
     public void render(Graphics g){
         player.render(g);
+        levelManager.draw(g);
+    }    
+    
+    private void initClasses() {
+        player = new Player(200, 200);
+        levelManager = new LevelManager(this);
+    }
+
+    public void windowFocusLost(){
+        player.resetDirBooleans();
     }
     
-    public void run() {
+    public Player getPlayer(){
+        return player;
+    }
+public void run() {
         double timePerFrame = 1000000000 / FPS_SET;
         double timePerUpdate = 1000000000 / UPS_SET;
         long previousTime = System.nanoTime();
@@ -98,15 +114,4 @@ public class Game implements Runnable {
         }
     }
 
-    private void initClasses() {
-        player = new Player(200, 200);
-    }
-
-    public void windowFocusLost(){
-        player.resetDirBooleans();
-    }
-    
-    public Player getPlayer(){
-        return player;
-    }
 }
