@@ -33,27 +33,48 @@ public class Game implements Runnable {
         gameThread = new Thread(this);
         gameThread.start();
     }
+    public void update(){
+        gamePanel.updateGame();
+    }
+    
     public void run() {
         double timePerFrame = 1000000000 / FPS_SET;
         double timePerUpdate = 1000000000 / UPS_SET;
-        long lastFrame = System.nanoTime();
-        long now = System.nanoTime();
+        long previousTime = System.nanoTime();
+        
         
         int frames = 0;
+        int updates = 0;
+        
         long lastCheck = System.currentTimeMillis();
         
+        double deltaUpdates = 0;
+        double deltaFrames = 0;
+        
         while(true){
-            now = System.nanoTime();
-            if(now-lastFrame >= timePerFrame){
+            
+            long currentTime = System.nanoTime();
+            
+            deltaUpdates += (currentTime - previousTime)/timePerUpdate;
+            deltaFrames += (currentTime - previousTime)/timePerFrame;
+            previousTime = currentTime;
+            
+            if(deltaUpdates >= 1){
+                update();
+                updates++;
+                deltaUpdates--;
+            }
+            if(deltaFrames >= 1){
                 gamePanel.repaint();
-                lastFrame = now;
                 frames++;
+                deltaFrames--;
             }
             
             if (System.currentTimeMillis() - lastCheck >= 1000){
                 lastCheck = System.currentTimeMillis();
-                System.out.println("FPS: " + frames);
+                System.out.println("FPS: " + frames + " | UPS: "+ updates);
                 frames = 0;
+                updates = 0;
             }
         }
     }

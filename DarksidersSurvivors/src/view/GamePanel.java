@@ -47,7 +47,7 @@ public class GamePanel extends JPanel{
         this.moving = false;
         this.playerAction = IDLE;
         this.playerDirection = -1;
-        this.animationIndex = this.animationSpeed = this.animationTick = 20;
+        this.animationIndex = this.animationSpeed = this.animationTick = 30;
         importImage();
         loadAnimations();
         
@@ -129,13 +129,15 @@ public class GamePanel extends JPanel{
         }
     }
     
-    public void paintComponent(Graphics g){
-        super.paintComponent(g);
+    public void updateGame(){
         updateAnimationTick();
-        
         setAnimation();
         updatePosition();
         
+    }
+    
+    public void paintComponent(Graphics g){
+        super.paintComponent(g);
         g.drawImage(animations[playerAction][animationIndex], (int)xDelta, (int) yDelta,120, 120,  this);
     }
 
