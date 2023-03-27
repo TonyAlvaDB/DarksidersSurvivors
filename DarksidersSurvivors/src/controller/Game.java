@@ -5,6 +5,8 @@
 
 package controller;
 
+import java.awt.Graphics;
+import model.Player;
 import view.GamePanel;
 import view.GameWindow;
 
@@ -21,12 +23,16 @@ public class Game implements Runnable {
     private Thread gameThread;
     private final int FPS_SET = 120;
     private final int UPS_SET = 200;
+    private Player player;
     
     public Game (){
-        gamePanel = new GamePanel();
+        initClasses();
+        gamePanel = new GamePanel(this);
         gameWindow = new GameWindow(gamePanel);
         gamePanel.requestFocus();
+        
         startGameLoop();
+        
     }
 
     private void startGameLoop(){
@@ -34,7 +40,11 @@ public class Game implements Runnable {
         gameThread.start();
     }
     public void update(){
-        gamePanel.updateGame();
+        player.update();
+    }
+    
+    public void render(Graphics g){
+        player.render(g);
     }
     
     public void run() {
@@ -77,5 +87,13 @@ public class Game implements Runnable {
                 updates = 0;
             }
         }
+    }
+
+    private void initClasses() {
+        player = new Player(200, 200);
+    }
+
+    public Player getPlayer(){
+        return player;
     }
 }
