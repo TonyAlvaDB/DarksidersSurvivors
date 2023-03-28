@@ -63,7 +63,7 @@ public class Game implements Runnable {
     }    
     
     private void initClasses() {
-        player = new Player(200, 200, 40, 50);
+        player = new Player(200, 200, 40*(int)SCALE, 50*(int)SCALE);
         levelManager = new LevelManager(this);
     }
 
