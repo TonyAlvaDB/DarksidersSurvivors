@@ -57,11 +57,11 @@ public class Game implements Runnable {
     }
     
     public void render(Graphics g){
-        //levelManager.draw(g);
+       
         levelManager.drawBackgroundMap(g);
         player.render(g);
         
-    }    
+    }   
     
     private void initClasses() {
         player = new Player(200, 200, 40*(int)SCALE, 50*(int)SCALE);
