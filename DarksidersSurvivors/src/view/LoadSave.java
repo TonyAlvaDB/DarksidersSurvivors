@@ -1,37 +1,26 @@
 package view;
 
-
-import controller.Game;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
+
 import javax.imageio.ImageIO;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+import controller.Game;
 
-/**
- *
- * Program created by
- * @author Anthony Alvarez Delgado
- * Software Engeneer Student - UIA
- *
- */
 public class LoadSave {
-    
+
     public static final String PLAYER_ATLAS = "SpriteSheet.png";
     public static final String LEVEL_ATLAS = "outdoors.png";
     public static final String LEVEL_ONE_DATA = "map_draw.png";
-    
-    
-    public static BufferedImage GetSpriteAtlas(String fileName){
+
+    public static BufferedImage GetSpriteAtlas(String fileName) {
         BufferedImage img = null;
         InputStream is = LoadSave.class.getResourceAsStream("/" + fileName);
         try {
             img = ImageIO.read(is);
+
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -44,17 +33,19 @@ public class LoadSave {
         return img;
     }
 
-    public static int[][]GetLevelData(){
+    public static int[][] GetLevelData() {
         int[][] lvlData = new int[Game.TILES_IN_HEIGHT][Game.TILES_IN_WIDTH];
         BufferedImage img = GetSpriteAtlas(LEVEL_ONE_DATA);
+
         for (int j = 0; j < img.getHeight(); j++)
-            for(int i = 0; i < img.getWidth(); i++){
+            for (int i = 0; i < img.getWidth(); i++) {
                 Color color = new Color(img.getRGB(i, j));
                 int value = color.getRed();
-                if(value >= 64)
+                if (value >= 64)
                     value = 0;
-                lvlData[j][i] =value; 
+                lvlData[j][i] = value;
             }
         return lvlData;
+
     }
 }
