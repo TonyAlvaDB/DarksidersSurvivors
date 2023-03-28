@@ -40,5 +40,7 @@ public class LoadSave {
         return img;
     }
 
-    
+    //public static int[][]GetLevelData(){
+        
+    //}
 }

@@ -20,21 +20,24 @@ public class LevelManager {
     private Game game;
     private BufferedImage[] levelSprite;
     
+    
     public LevelManager(Game game){
         this.game = game;
         //levelSprite = LoadSave.GetSpriteAtlas(LoadSave.LEVEL_ATLAS);
         importOutsideSprites();
     }
+    
     public void draw(Graphics g){
-        g.drawImage(levelSprite[8], 0, 0, null);
+        
+        g.drawImage(levelSprite[32], 0, 0, null);
     }
     
     private void importOutsideSprites() {
         BufferedImage img = LoadSave.GetSpriteAtlas(LoadSave.LEVEL_ATLAS);
-        levelSprite = new BufferedImage[841];
-        for(int j = 0; j < 29; j++)
-            for(int i = 0; i < 29; i++){
-                int index = j*16 + i;
+        levelSprite = new BufferedImage[64];
+        for(int j = 0; j < 5; j++)
+            for(int i = 0; i < 5; i++){
+                int index = j*8 + i;
                 levelSprite[index] = img.getSubimage(i*16, j*16, 16, 16);
             }
     }

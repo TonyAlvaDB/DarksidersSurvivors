@@ -13,5 +13,11 @@ package view;
  *
  */
 public class Levels {
-
+    private LevelManager levelManager;
+    public Levels(){
+        
+    }
+    
+    
+    
 }
