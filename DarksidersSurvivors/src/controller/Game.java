@@ -57,7 +57,8 @@ public class Game implements Runnable {
     }
     
     public void render(Graphics g){
-        levelManager.draw(g);
+        //levelManager.draw(g);
+        levelManager.drawBackgroundMap(g);
         player.render(g);
         
     }    
@@ -74,7 +75,7 @@ public class Game implements Runnable {
     public Player getPlayer(){
         return player;
     }
-public void run() {
+    public void run() {
         double timePerFrame = 1000000000 / FPS_SET;
         double timePerUpdate = 1000000000 / UPS_SET;
         long previousTime = System.nanoTime();
