@@ -13,11 +13,13 @@ package view;
  *
  */
 public class Levels {
-    private LevelManager levelManager;
-    public Levels(){
-        
+    private int[][] lvlData;
+    public Levels(int[][] lvlData){
+        this.lvlData = lvlData;
     }
     
-    
+    public int getSpriteIndex(int x, int y){
+        return lvlData[y][x];
+    }
     
 }
