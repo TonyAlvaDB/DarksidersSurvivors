@@ -16,7 +16,7 @@ public class Player extends Entity {
     private int playerAction = IDLE;
     private boolean moving = false, attacking = false;
     private boolean left, up, right, down;
-    private float playerSpeed = 1.0f;
+    private float playerSpeed = 0.4f;
 
     public Player(float x, float y) {
         super(x, y);
@@ -30,7 +30,7 @@ public class Player extends Entity {
     }
 
     public void render(Graphics g) {
-        g.drawImage(animations[playerAction][aniIndex], (int) x, (int) y, 100, 100, null);
+        g.drawImage(animations[playerAction][aniIndex], (int) x, (int) y, 50, 50, null);
     }
 
     private void updateAnimationTick() {
