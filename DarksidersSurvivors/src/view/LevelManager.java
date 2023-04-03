@@ -4,7 +4,6 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
 import controller.Game;
-import view.LoadSave;
 
 public class LevelManager {
 

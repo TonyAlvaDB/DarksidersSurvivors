@@ -8,15 +8,7 @@ package view;
 import controller.Game;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.imageio.ImageIO;
 import javax.swing.JPanel;
-import static model.Constants.PlayerConstants.*;
-import static model.Constants.Directions.*;
 import static controller.Game.GAME_HEIGHT;
 import static controller.Game.GAME_WIDTH;
 

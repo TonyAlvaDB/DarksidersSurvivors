@@ -3,8 +3,6 @@ package view;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import view.GamePanel;
-import static model.Constants.Directions.*;
 
 public class KeyboardInputs implements KeyListener {
 
