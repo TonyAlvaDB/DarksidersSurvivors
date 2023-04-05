@@ -5,6 +5,7 @@
 
 package controller;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
@@ -28,6 +29,8 @@ public class Menu extends State implements Statemethods{
 
     
     public void draw(Graphics g) {
+        g.setColor(Color.black);
+        g.drawString("MENU", game.GAME_WIDTH / 2, 200);
     }
 
     
@@ -48,6 +51,9 @@ public class Menu extends State implements Statemethods{
 
     
     public void keyPressed(KeyEvent e) {
+        if(e.getKeyCode() == KeyEvent.VK_ENTER)
+            Gamestate.state = Gamestate.PLAYING;
+        
     }
 
     

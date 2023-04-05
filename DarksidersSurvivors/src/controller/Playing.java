@@ -43,10 +43,15 @@ public class Playing extends State implements Statemethods {
 
     
     public void update() {
+        levelManager.update();
+        player.update();
     }
 
     
     public void draw(Graphics g) {
+        levelManager.drawBackgroundMap(g);
+        player.render(g);
+        
     }
 
     
