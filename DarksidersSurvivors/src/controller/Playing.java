@@ -4,7 +4,6 @@
  */
 package controller;
 
-import static controller.Game.SCALE;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
@@ -92,6 +91,8 @@ public class Playing extends State implements Statemethods {
             case KeyEvent.VK_1:
                 player.setAttacking(true);
                 break;
+            case KeyEvent.VK_BACK_SPACE:
+                Gamestate.state = Gamestate.MENU;
             }
     }
 
