@@ -16,7 +16,11 @@ import java.awt.event.MouseEvent;
  * Software Engeneer Student - UIA
  *
  */
-public class Menu implements Statemethods{
+public class Menu extends State implements Statemethods{
+
+    public Menu(Game game) {
+        super(game);
+    }
 
     
     public void update() {

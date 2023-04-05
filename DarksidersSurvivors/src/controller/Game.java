@@ -24,6 +24,9 @@ public class Game implements Runnable {
     private final int FPS_SET = 120;
     private final int UPS_SET = 200;
     
+    private Playing playing;
+    private Menu menu;
+    
     public final static int TILES_DEFAULT_SIZE = 16;
     public final static float SCALE = 1.5f;
     public final static int TILES_IN_WIDTH = 40;
