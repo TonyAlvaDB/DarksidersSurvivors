@@ -5,6 +5,10 @@
 
 package controller;
 
+import java.awt.Graphics;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
+
 /**
  *
  * Program created by
@@ -12,6 +16,38 @@ package controller;
  * Software Engeneer Student - UIA
  *
  */
-public class Menu {
+public class Menu implements Statemethods{
 
+    
+    public void update() {
+    }
+
+    
+    public void draw(Graphics g) {
+    }
+
+    
+    public void mouseClicked(MouseEvent e) {
+    }
+
+    
+    public void mousePressed(MouseEvent e) {
+    }
+
+    
+    public void mouseReleased(MouseEvent e) {
+    }
+
+    
+    public void mouseMoved(MouseEvent e) {
+    }
+
+    
+    public void keyPressed(KeyEvent e) {
+    }
+
+    
+    public void keyReleased(KeyEvent e) {
+    }
+    
 }

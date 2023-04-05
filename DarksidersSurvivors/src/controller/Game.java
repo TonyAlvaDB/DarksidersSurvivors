@@ -6,10 +6,8 @@
 package controller;
 
 import java.awt.Graphics;
-import model.Player;
 import view.GamePanel;
 import view.GameWindow;
-import view.LevelManager;
 
 /**
  *
@@ -21,11 +19,11 @@ import view.LevelManager;
 public class Game implements Runnable {
     private GameWindow gameWindow;
     private GamePanel gamePanel;
-    private LevelManager levelManager;
+    
     private Thread gameThread;
     private final int FPS_SET = 120;
     private final int UPS_SET = 200;
-    private Player player;
+    
     public final static int TILES_DEFAULT_SIZE = 16;
     public final static float SCALE = 1.5f;
     public final static int TILES_IN_WIDTH = 40;
@@ -51,30 +49,44 @@ public class Game implements Runnable {
         gameThread.start();
     }
     public void update(){
-        levelManager.update();
-        player.update();
         
+        
+        switch(Gamestate.state){
+            case MENU:
+                //menu.update();
+                break;
+            case PLAYING:
+
+                break;
+            default:
+                break;
+        }
     }
     
     public void render(Graphics g){
-       
-        levelManager.drawBackgroundMap(g);
-        player.render(g);
+        switch(Gamestate.state){
+            case MENU:
+                //menu.render(g);
+                break;
+            case PLAYING:
+
+                break;
+            default:
+                break;
+       }
+        
         
     }   
     
     private void initClasses() {
-        player = new Player(200, 200, 40*(int)SCALE, 50*(int)SCALE);
-        levelManager = new LevelManager(this);
+        
     }
 
     public void windowFocusLost(){
         player.resetDirBooleans();
     }
     
-    public Player getPlayer(){
-        return player;
-    }
+
     public void run() {
         double timePerFrame = 1000000000 / FPS_SET;
         double timePerUpdate = 1000000000 / UPS_SET;

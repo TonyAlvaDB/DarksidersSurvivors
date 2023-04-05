@@ -5,6 +5,9 @@
 
 package controller;
 
+import model.Player;
+import view.LevelManager;
+
 /**
  *
  * Program created by
@@ -13,5 +16,6 @@ package controller;
  *
  */
 public class Playing {
-
+    private LevelManager levelManager;
+    private Player player;
 }
