@@ -13,7 +13,7 @@ public class Player extends Entity {
     private int playerAction = IDLE;
     private boolean moving = false, attacking = false;
     private boolean left, up, right, down;
-    private float playerSpeed = 0.4f;
+    private float playerSpeed = 0.4f*Game.SCALE;
 
     public Player(float x, float y, int width, int height) {
         super(x, y, width, height);

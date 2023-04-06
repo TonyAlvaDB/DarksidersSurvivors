@@ -21,6 +21,7 @@ public class Playing extends State implements Statemethods {
 
     private LevelManager levelManager;
     private Player player;
+    private boolean paused;
 
     public Playing(Game game) {
         super(game);

@@ -10,7 +10,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import view.LoadSave;
-import view.ui.MenuButton;
 
 /**
  *
@@ -21,13 +20,11 @@ import view.ui.MenuButton;
  */
 public class Menu extends State implements Statemethods {
 
-    private MenuButton[] buttons = new MenuButton[3];
     private BufferedImage backgroundImg;
     private int menuX, menuY, menuWidth, menuHeight;
 
     public Menu(Game game) {
         super(game);
-        loadButtons();
         loadBackground();
 
     }
@@ -38,83 +35,44 @@ public class Menu extends State implements Statemethods {
         menuHeight = (int) (backgroundImg.getHeight() * Game.SCALE);
         menuX = Game.GAME_WIDTH / 2 - menuWidth / 2;
         menuY = (int) (1 * Game.SCALE);
-    }
 
-    private void loadButtons() {
-        buttons[0] = new MenuButton(Game.GAME_WIDTH / 2, (int) (150 * Game.SCALE), 0, Gamestate.PLAYING);
-        buttons[1] = new MenuButton(Game.GAME_WIDTH / 2, (int) (220 * Game.SCALE), 1, Gamestate.OPTIONS);
-        buttons[2] = new MenuButton(Game.GAME_WIDTH / 2, (int) (290 * Game.SCALE), 2, Gamestate.QUIT);
-    }
 
- 
-    public void update() {
-        for (MenuButton mb : buttons) {
-            mb.update();
-        }
     }
-
 
     public void draw(Graphics g) {
 
         g.drawImage(backgroundImg, menuX, menuY, menuWidth, menuHeight, null);
 
-        for (MenuButton mb : buttons) {
-            mb.draw(g);
-        }
-    }
+        g.setFont(g.getFont().deriveFont(4, 30f));
 
+        g.setColor(Color.black);
+        g.drawString("Presione la tecla Enter para comenzar", 220, Game.GAME_WIDTH / 2);
+
+    }
 
     public void mouseClicked(MouseEvent e) {
-        // TODO Auto-generated method stub
+        
 
     }
-
 
     public void mousePressed(MouseEvent e) {
-        for (MenuButton mb : buttons) {
-            if (isIn(e, mb)) {
-                mb.setMousePressed(true);
-            }
-        }
+       
 
     }
 
-
     public void mouseReleased(MouseEvent e) {
-        for (MenuButton mb : buttons) {
-            if (isIn(e, mb)) {
-                if (mb.isMousePressed()) {
-                    mb.applyGamestate();
-                }
-                break;
-            }
-        }
-
-        resetButtons();
+      
 
     }
 
     private void resetButtons() {
-        for (MenuButton mb : buttons) {
-            mb.resetBools();
-        }
-
+       
     }
 
     public void mouseMoved(MouseEvent e) {
-        for (MenuButton mb : buttons) {
-            mb.setMouseOver(false);
-        }
-
-        for (MenuButton mb : buttons) {
-            if (isIn(e, mb)) {
-                mb.setMouseOver(true);
-                break;
-            }
-        }
+        
 
     }
-
 
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_ENTER) {
@@ -123,10 +81,13 @@ public class Menu extends State implements Statemethods {
 
     }
 
-
     public void keyReleased(KeyEvent e) {
         // TODO Auto-generated method stub
 
+    }
+
+
+    public void update() {
     }
 
 }
