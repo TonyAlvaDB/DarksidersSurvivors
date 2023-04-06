@@ -1,12 +1,13 @@
 package model;
 
+import controller.Game;
 import view.LoadSave;
 import static model.Constants.PlayerConstants.*;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
-
 public class Player extends Entity {
+
     private BufferedImage[][] animations;
     private int aniTick, aniIndex, aniSpeed = 30;
     private int playerAction = IDLE;
@@ -17,29 +18,32 @@ public class Player extends Entity {
     public Player(float x, float y, int width, int height) {
         super(x, y, width, height);
         loadAnimations();
+        initHitbox(x, y, (int) (20 * Game.SCALE), (int) (27 * Game.SCALE));
+
     }
 
     public void update() {
         updatePos();
-        updateHitBox();
+       
         updateAnimationTick();
         setAnimation();
     }
 
     public void render(Graphics g) {
         g.drawImage(animations[playerAction][aniIndex], (int) x, (int) y, 50, 50, null);
-        drawHitBox(g);
+        
+        
     }
 
     private void updateAnimationTick() {
         aniTick++;
         if (aniTick >= aniSpeed) {
-                aniTick = 0;
-                aniIndex++;
-                if (aniIndex >= GetSpriteAmount(playerAction)) {
-                        aniIndex = 0;
-                        attacking = false;
-                }
+            aniTick = 0;
+            aniIndex++;
+            if (aniIndex >= GetSpriteAmount(playerAction)) {
+                aniIndex = 0;
+                attacking = false;
+            }
 
         }
 
@@ -48,16 +52,19 @@ public class Player extends Entity {
     private void setAnimation() {
         int startAni = playerAction;
 
-        if (moving)
+        if (moving) {
             playerAction = WALK;
-        else
+        } else {
             playerAction = IDLE;
+        }
 
-        if (attacking)
+        if (attacking) {
             playerAction = SWORD;
+        }
 
-        if (startAni != playerAction)
+        if (startAni != playerAction) {
             resetAniTick();
+        }
     }
 
     private void resetAniTick() {
@@ -74,7 +81,7 @@ public class Player extends Entity {
         } else if (right && !left) {
             x += playerSpeed;
             moving = true;
-    }
+        }
         if (up && !down) {
             y -= playerSpeed;
             moving = true;
@@ -85,13 +92,15 @@ public class Player extends Entity {
     }
 
     private void loadAnimations() {
-        
+
         BufferedImage img = LoadSave.GetSpriteAtlas(LoadSave.PLAYER_ATLAS);
 
         animations = new BufferedImage[6][11];
-        for (int j = 0; j < animations.length; j++)
-            for (int i = 0; i < animations[j].length; i++)
+        for (int j = 0; j < animations.length; j++) {
+            for (int i = 0; i < animations[j].length; i++) {
                 animations[j][i] = img.getSubimage(i * 22, j * 24, 22, 24);
+            }
+        }
 
     }
 
@@ -137,6 +146,5 @@ public class Player extends Entity {
     public void setDown(boolean down) {
         this.down = down;
     }
-
 
 }

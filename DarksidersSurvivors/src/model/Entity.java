@@ -3,34 +3,39 @@ package model;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import java.awt.geom.Rectangle2D;
 
 public abstract class Entity {
-	
-    protected float x,y;
+
+    protected float x, y;
     protected int width, height;
-    protected Rectangle hitBox;
+    protected Rectangle2D.Float hitbox;
+
     public Entity(float x, float y, int width, int height) {
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
-        
-        initHitBox();
-	
+
     }
 
-    protected void drawHitBox(Graphics g){
+    protected void drawHitbox(Graphics g) {
+        // For debugging the hitbox
         g.setColor(Color.PINK);
-        g.drawRect(hitBox.x, hitBox.y, width, height);
+        g.drawRect((int) hitbox.x, (int) hitbox.y, (int) hitbox.width, (int) hitbox.height);
+
     }
-    private void initHitBox() {
-        hitBox = new Rectangle((int)x, (int)y, width, height);
+
+    protected void initHitbox(float x, float y, int width, int height) {
+        hitbox = new Rectangle2D.Float(x, y, width, height);
     }
-    protected void updateHitBox(){
-        hitBox.x = (int)x;
-        hitBox.y = (int)y;
+
+//	protected void updateHitbox() {
+//		hitbox.x = (int) x;
+//		hitbox.y = (int) y;
+//	}
+    public Rectangle2D.Float getHitbox() {
+        return hitbox;
     }
-    public Rectangle getHitBox(){
-        return hitBox;
-    }
+
 }
