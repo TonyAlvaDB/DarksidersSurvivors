@@ -47,14 +47,14 @@ public class Menu extends State implements Statemethods {
         buttons[2] = new MenuButton(Game.GAME_WIDTH / 2, (int) (290 * Game.SCALE), 2, Gamestate.QUIT);
     }
 
-    @Override
+ 
     public void update() {
         for (MenuButton mb : buttons) {
             mb.update();
         }
     }
 
-    @Override
+
     public void draw(Graphics g) {
 
         g.drawImage(backgroundImg, menuX, menuY, menuWidth, menuHeight, null);
@@ -64,13 +64,13 @@ public class Menu extends State implements Statemethods {
         }
     }
 
-    @Override
+
     public void mouseClicked(MouseEvent e) {
         // TODO Auto-generated method stub
 
     }
 
-    @Override
+
     public void mousePressed(MouseEvent e) {
         for (MenuButton mb : buttons) {
             if (isIn(e, mb)) {
@@ -80,7 +80,7 @@ public class Menu extends State implements Statemethods {
 
     }
 
-    @Override
+
     public void mouseReleased(MouseEvent e) {
         for (MenuButton mb : buttons) {
             if (isIn(e, mb)) {
@@ -102,7 +102,6 @@ public class Menu extends State implements Statemethods {
 
     }
 
-    @Override
     public void mouseMoved(MouseEvent e) {
         for (MenuButton mb : buttons) {
             mb.setMouseOver(false);
@@ -117,7 +116,7 @@ public class Menu extends State implements Statemethods {
 
     }
 
-    @Override
+
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_ENTER) {
             Gamestate.state = Gamestate.PLAYING;
@@ -125,7 +124,7 @@ public class Menu extends State implements Statemethods {
 
     }
 
-    @Override
+
     public void keyReleased(KeyEvent e) {
         // TODO Auto-generated method stub
 
