@@ -18,20 +18,20 @@ public class Player extends Entity {
     public Player(float x, float y, int width, int height) {
         super(x, y, width, height);
         loadAnimations();
-        initHitbox(x, y, (int) (20 * Game.SCALE), (int) (27 * Game.SCALE));
+        initHitbox(x, y, (int) (22 * Game.SCALE), (int) (32 * Game.SCALE));
 
     }
 
     public void update() {
         updatePos();
-       
         updateAnimationTick();
         setAnimation();
+        updateHitbox();
     }
 
     public void render(Graphics g) {
         g.drawImage(animations[playerAction][aniIndex], (int) x, (int) y, 50, 50, null);
-        
+        drawHitbox(g);
         
     }
 
