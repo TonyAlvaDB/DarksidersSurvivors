@@ -29,7 +29,7 @@ public class Playing extends State implements Statemethods {
     }
 
     private void initClasses() {
-        player = new Player(200, 200, 40 * (int) Game.SCALE, 50 * (int) Game.SCALE);
+        player = new Player(Game.GAME_HEIGHT/2, Game.GAME_WIDTH/2, 40 * (int) Game.SCALE, 50 * (int) Game.SCALE);
         levelManager = new LevelManager(game);
     }
 
