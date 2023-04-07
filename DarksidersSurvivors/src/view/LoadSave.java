@@ -14,6 +14,7 @@ public class LoadSave {
     public static final String MENU_BUTTONS = "button_atlas.png";
     public static final String MENU_BACKGROUND = "background_menu.jpg";
     public static final String ENEMY_ONE = "skeleton_Big.jpg";
+    public static final String ENEMY_TWO = "orc_small.jpg";
 
     public static BufferedImage GetSpriteAtlas(String fileName) {
         BufferedImage img = null;
