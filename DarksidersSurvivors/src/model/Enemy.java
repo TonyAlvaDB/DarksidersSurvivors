@@ -16,7 +16,7 @@ import static model.Constants.EnemyConstants.*;
 public abstract class Enemy extends Entity {
 
     private int aniIndex, enemyState, enemyType;
-    private int aniTick, aniSpeed = 25;
+    private int aniTick, aniSpeed = 30;
 
     public Enemy(float x, float y, int width, int height, int enemyType) {
         super(x, y, width, height);

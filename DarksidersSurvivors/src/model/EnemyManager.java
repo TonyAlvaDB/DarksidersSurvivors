@@ -4,6 +4,7 @@
  */
 package model;
 
+import controller.Game;
 import controller.Playing;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -44,7 +45,7 @@ public class EnemyManager {
 
     private void drawOrcs(Graphics g) {
         for (Orc o : orcs) {
-            g.drawImage(orcArray[o.getEnemyState()][o.getAniIndex()], (int) o.getHitbox().x, (int) o.getHitbox().y, ENEMY_TWO_WIDTH, ENEMY_TWO_HEIGHT, null);
+            g.drawImage(orcArray[o.getEnemyState()][o.getAniIndex()], (int) o.getHitbox().x, (int) o.getHitbox().y, (int)(ENEMY_TWO_WIDTH*Game.SCALE), (int)(ENEMY_TWO_HEIGHT*Game.SCALE), null);
         }
     }
 
