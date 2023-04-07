@@ -7,6 +7,7 @@ package controller;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
+import model.EnemyManager;
 import model.Player;
 import view.LevelManager;
 
@@ -22,6 +23,7 @@ public class Playing extends State implements Statemethods {
     private LevelManager levelManager;
     private Player player;
     private boolean paused;
+    private EnemyManager enemyManager;
 
     public Playing(Game game) {
         super(game);
@@ -29,8 +31,11 @@ public class Playing extends State implements Statemethods {
     }
 
     private void initClasses() {
-        player = new Player(Game.GAME_HEIGHT/2, Game.GAME_WIDTH/2, 40 * (int) Game.SCALE, 50 * (int) Game.SCALE);
+        
         levelManager = new LevelManager(game);
+        enemyManager = new EnemyManager(this);
+        player = new Player(Game.GAME_HEIGHT/2, Game.GAME_WIDTH/2, 40 * (int) Game.SCALE, 50 * (int) Game.SCALE);
+        
     }
 
     public void windowFocusLost() {
@@ -45,12 +50,14 @@ public class Playing extends State implements Statemethods {
     public void update() {
         levelManager.update();
         player.update();
+        enemyManager.update();
     }
 
     
     public void draw(Graphics g) {
         levelManager.drawBackgroundMap(g);
         player.render(g);
+        enemyManager.draw(g);
         
     }
 

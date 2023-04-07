@@ -29,23 +29,32 @@ public class EnemyManager {
     public EnemyManager(Playing playing) {
         this.playing = playing;
         loadEnemyImgs();
+        addEnemies();
+        
+    }
+    private void addEnemies() {
+        orcs = LoadSave.GetOrcs();
     }
 
     public void update() {
-        for(Orc o : orcs)
+        for (Orc o : orcs) {
             o.update();
+        }
     }
+
     private void drawOrcs(Graphics g) {
-        for(Orc o : orcs)
-            g.drawImage(orcArray[o.getEnemyState()][o.getAniIndex()], (int)o.getHitbox().x, (int)o.getHitbox().y, ENEMY_TWO_WIDTH, ENEMY_TWO_HEIGHT, Color.yellow, null);
+        for (Orc o : orcs) {
+            g.drawImage(orcArray[o.getEnemyState()][o.getAniIndex()], (int) o.getHitbox().x, (int) o.getHitbox().y, ENEMY_TWO_WIDTH, ENEMY_TWO_HEIGHT, null);
+        }
     }
+
     public void draw(Graphics g) {
         drawOrcs(g);
     }
 
     private void loadEnemyImgs() {
         orcArray = new BufferedImage[4][8];
-        BufferedImage temp = LoadSave.GetSpriteAtlas(LoadSave.ENEMY_TWO);
+        BufferedImage temp = LoadSave.GetSpriteAtlas(LoadSave.ORC_ENEMY);
         for (int j = 0; j < orcArray.length; j++) {
             for (int i = 0; i < orcArray[j].length; i++) {
                 orcArray[j][i] = temp.getSubimage(i * ENEMY_TWO_WIDTH_DEFAULT, j * ENEMY_TWO_HEIGHT_DEFAULT, ENEMY_TWO_WIDTH_DEFAULT, ENEMY_TWO_HEIGHT_DEFAULT);
@@ -54,5 +63,6 @@ public class EnemyManager {
         }
     }
 
-    
+
+
 }
