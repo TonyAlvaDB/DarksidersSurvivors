@@ -15,6 +15,7 @@ public class LoadSave {
 
     public static final String PLAYER_ATLAS = "SpriteSheet.png";
     public static final String BASE_BACKGROUND = "background.png";
+    public static final String ENEMY_SPRITE_GENERATOR = "map_draw.png";
     public static final String MENU_BUTTONS = "button_atlas.png";
     public static final String MENU_BACKGROUND = "background_menu.jpg";
     public static final String ENEMY_ONE = "skeleton_Big.jpg";
@@ -39,7 +40,7 @@ public class LoadSave {
     }
 
     public static ArrayList<Orc> GetOrcs() {
-        BufferedImage img = GetSpriteAtlas(ORC_ENEMY);
+        BufferedImage img = GetSpriteAtlas(ENEMY_SPRITE_GENERATOR);
         ArrayList<Orc> list = new ArrayList<>();
         for (int j = 0; j < img.getHeight(); j++) {
             for (int i = 0; i < img.getWidth(); i++) {
