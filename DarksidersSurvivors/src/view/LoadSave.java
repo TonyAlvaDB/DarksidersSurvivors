@@ -48,6 +48,7 @@ public class LoadSave {
                 int value = color.getGreen();
                 if (value == ORC) {
                     list.add(new Orc(i * Game.TILES_SIZE, j * Game.TILES_SIZE));
+                    
                 }
             }
         }

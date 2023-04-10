@@ -13,6 +13,7 @@ package model;
  */
 
 import controller.Game;
+import java.awt.Graphics;
 import static model.Constants.Directions.*;
 import static model.Constants.EnemyConstants.*;
 public abstract class Enemy extends Entity {
@@ -24,7 +25,7 @@ public abstract class Enemy extends Entity {
     protected float attackDistance = Game.TILES_SIZE;
 
     public Enemy(float x, float y, int width, int height, int enemyType) {
-        super(x, y, width, height);
+    super(x, y, width, height);
         this.enemyType = enemyType;
         initHitbox(x, y, width, height);
     }
@@ -45,23 +46,14 @@ public abstract class Enemy extends Entity {
         updateMove();
     }
     
+    public void render(Graphics g){
+        drawHitbox(g);
+        
+    }
+    
     private void updateMove(){
-        switch(enemyState){
-            case IDLE:
-                enemyState = RUNNING;
-                break;
-            case RUNNING:
-                float xSpeed = 0;
-                
-                if(walkDir == LEFT)
-                    xSpeed = -walkSpeed;
-                else
-                    xSpeed = walkSpeed;
-                
-                changeWalkDir();
-                break;
-                
-        }
+           
+        
     }
 
     protected boolean canSeePlayer(Player player){
@@ -80,6 +72,7 @@ public abstract class Enemy extends Entity {
             return true;
         return false;
     }
+
     
     public int getAniIndex() {
         return aniIndex;
@@ -96,6 +89,7 @@ public abstract class Enemy extends Entity {
             walkDir = LEFT;
         
     }
+    
 
 
 

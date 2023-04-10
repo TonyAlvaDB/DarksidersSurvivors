@@ -15,12 +15,11 @@ public abstract class Entity {
         this.y = y;
         this.width = width;
         this.height = height;
-
     }
 
     protected void drawHitbox(Graphics g) {
         // For debugging the hitbox
-        g.setColor(Color.PINK);
+        g.setColor(Color.RED);
         g.drawRect((int) hitbox.x, (int) hitbox.y, (int) hitbox.width, (int) hitbox.height);
 
     }
