@@ -28,6 +28,7 @@ public class Constants {
 
         public static final int ENEMY_TWO_WIDTH = (int) ((int) (ENEMY_TWO_WIDTH_DEFAULT) * Game.SCALE);
         public static final int ENEMY_TWO_HEIGHT = (int) ((int) (ENEMY_TWO_HEIGHT_DEFAULT) * Game.SCALE);
+        
 
         public static int GetSpriteAmount(int enemy_type, int enemy_state) {
             switch (enemy_type) {

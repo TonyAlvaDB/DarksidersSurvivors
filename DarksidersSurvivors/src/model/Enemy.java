@@ -12,11 +12,16 @@ package model;
  *
  */
 
+import controller.Game;
+import static model.Constants.Directions.*;
 import static model.Constants.EnemyConstants.*;
 public abstract class Enemy extends Entity {
 
     private int aniIndex, enemyState, enemyType;
     private int aniTick, aniSpeed = 30;
+    private float walkSpeed = 1.0f * Game.SCALE;
+    private int walkDir = LEFT;
+    protected float attackDistance = Game.TILES_SIZE;
 
     public Enemy(float x, float y, int width, int height, int enemyType) {
         super(x, y, width, height);
@@ -37,14 +42,59 @@ public abstract class Enemy extends Entity {
 
     public void update() {
         updateAnimationTick();
+        updateMove();
+    }
+    
+    private void updateMove(){
+        switch(enemyState){
+            case IDLE:
+                enemyState = RUNNING;
+                break;
+            case RUNNING:
+                float xSpeed = 0;
+                
+                if(walkDir == LEFT)
+                    xSpeed = -walkSpeed;
+                else
+                    xSpeed = walkSpeed;
+                
+                changeWalkDir();
+                break;
+                
+        }
     }
 
+    protected boolean canSeePlayer(Player player){
+        int playerY = (int) player.getHitbox().y;
+        int playerX = (int) player.getHitbox().x;
+        if (isPlayerInRange(player))
+            return true;
+        return false;
+            
+        
+    }
+    private boolean isPlayerInRange(Player player){
+        int absValueX = (int) Math.abs(player.hitbox.x - hitbox.x);
+        int absValueY = (int) Math.abs(player.hitbox.y - hitbox.y);
+        if(absValueX <= attackDistance*5 && absValueY <= attackDistance*5)
+            return true;
+        return false;
+    }
+    
     public int getAniIndex() {
         return aniIndex;
     }
 
     public int getEnemyState() {
         return enemyState;
+    }
+
+    private void changeWalkDir() {
+        if(walkDir == LEFT)
+            walkDir = RIGHT;
+        else
+            walkDir = LEFT;
+        
     }
 
 
